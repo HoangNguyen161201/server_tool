@@ -24,7 +24,7 @@ export const createNew = async (req,res)=>{
     }
     if(req.body){
         if(req.body.title){
-            req.body.img = 'http://localhost:4000/img/'+req.body.img;
+            req.body.img = 'https://servertool.herokuapp.com/img/'+req.body.img;
             const r = new postModel(req.body);
             res.status(200).json(r);
             r.save();
@@ -49,7 +49,7 @@ export const updatePost = async (req,res)=>{
     if(req.body){
         if(req.body.title){
             if(req.body.img){
-                req.body.img = 'http://localhost:4000/img/'+req.body.img;
+                req.body.img = 'https://servertool.herokuapp.com/img/'+req.body.img;
             };
             await postModel.updateOne({_id:req.body._id},req.body);
             await postModel.findOne({_id:req.body._id}).then(e=>{
